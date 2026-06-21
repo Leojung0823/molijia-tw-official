@@ -6,50 +6,30 @@ const deviceCategories = [
 ];
 
 const products = [
-  { name:'iPhone ClearView AR 高清鋼化膜', category:'iPhone', series:'ClearView AR', badges:['hot','new'], summary:'主打低反射、高透光與順滑觸控，保留螢幕裸機清晰感。', features:['AR 低反射','高透光','抗指紋','9H'], price:'商城規劃中' },
-  { name:'iPhone Privacy Shield 防窺保護貼', category:'iPhone', series:'Privacy Shield', badges:['hot'], summary:'左右視角遮蔽，適合捷運、辦公、商務訊息與個人隱私保護。', features:['防窺','高清','抗刮','通勤'], price:'詢價中' },
-  { name:'iPhone Crystal Tempered 高清鋼化膜', category:'iPhone', series:'Crystal Tempered', badges:['new'], summary:'日常防刮與高清顯示，適合作為入門與套組主力商品。', features:['高清','9H','耐衝擊','入門'], price:'商城規劃中' },
-  { name:'Camera Lens 透明鏡頭保護貼', category:'Lens', series:'Lens Guard', badges:['new','hot'], summary:'與手機膜組合銷售，提高客單價並補足手機整體防護。', features:['鏡頭防刮','高透','組合包','易貼'], price:'商城規劃中' },
-  { name:'iPad PaperTouch 可拆式類紙膜', category:'iPad', series:'PaperTouch', badges:['hot','new'], summary:'寫字時裝上，看影片時拆下，兼顧 Apple Pencil 手感與螢幕畫質。', features:['類紙手感','可拆式','Apple Pencil','收納片'], price:'台灣定價待定' },
-  { name:'iPad Frame PaperTouch 框貼類紙膜', category:'iPad', series:'PaperTouch', badges:['hot'], summary:'框貼結構提升穩定度，適合長時間手寫、上課與設計草圖。', features:['框貼','不易位移','書寫','筆記'], price:'台灣定價待定' },
-  { name:'iPad ClearView AR 高清保護膜', category:'iPad', series:'ClearView AR', badges:['new'], summary:'降低窗邊與燈具反射，適合閱讀、追劇、簡報與長時間使用。', features:['AR','高清','低反射','閱讀'], price:'台灣定價待定' },
-  { name:'iPad Creator Combo 創作者套組', category:'iPad', series:'Bundle', badges:['hot'], summary:'AR 高清膜搭配可拆式類紙膜，兼顧影音畫質與書寫手感。', features:['套組','AR','類紙','創作者'], price:'套組待定' },
-  { name:'MacBook Anti-Glare 螢幕膜', category:'MacBook', series:'Anti-Glare', badges:['business'], summary:'降低辦公室燈光與戶外反光，提升長時間工作的閱讀舒適度。', features:['抗反光','辦公','MacBook','B2B'], price:'企業詢價' },
-  { name:'MacBook Privacy 商務防窺膜', category:'MacBook', series:'Privacy Shield', badges:['business','hot'], summary:'適合主管、業務與公司機採購，保護工作資料與客戶資訊。', features:['防窺','可拆規劃','商務','隱私'], price:'企業詢價' },
-  { name:'Laptop Custom Anti-Glare 客製筆電膜', category:'Laptop', series:'Business Custom', badges:['business'], summary:'支援非 MacBook 筆電與特殊尺寸，適合企業、學校與展示設備。', features:['客製尺寸','大量採購','專案報價','台灣客服'], price:'專案報價' },
-  { name:'Business Device Protection Plan', category:'B2B', series:'Business Custom', badges:['business'], summary:'可依公司設備清單建立保護貼型號、數量、出貨與補膜流程。', features:['公司機','教育平板','採購清單','售後'], price:'專案報價' }
+  { name:'iPhone 16 Pro ClearView AR 低反射膜', category:'iPhone', series:'ClearView AR', badges:['hot','new'], summary:'低反射、高透光與滑順觸控，適合戶外、導航與日常追劇。', features:['AR低反射','9H','抗指紋','高透光'], price:'NT$690', stock:'36 件' },
+  { name:'iPhone 16 Pro Max ClearView AR 低反射膜', category:'iPhone', series:'ClearView AR', badges:['hot'], summary:'大螢幕高清低反射版本，適合重度手機使用者。', features:['高清','低反射','抗刮','順滑'], price:'NT$740', stock:'28 件' },
+  { name:'iPhone Privacy Shield 防窺保護貼', category:'iPhone', series:'Privacy Shield', badges:['hot'], summary:'左右視角防窺，適合捷運通勤、辦公室與商務訊息保護。', features:['防窺','高清','抗刮','通勤'], price:'NT$790', stock:'22 件' },
+  { name:'iPhone Crystal Tempered 高清鋼化膜', category:'iPhone', series:'Crystal Tempered', badges:['new'], summary:'入門主力款，清晰、防刮、好上手，適合大量備貨與套組。', features:['高清','9H','防刮','入門'], price:'NT$390', stock:'80 件' },
+  { name:'Camera Lens Guard 鏡頭保護貼', category:'Lens', series:'Lens Guard', badges:['hot','bundle'], summary:'與手機膜搭配提高客單價，保護鏡頭玻璃不易刮傷。', features:['高透光','鏡頭防刮','套組推薦','易貼'], price:'NT$290', stock:'120 件' },
+  { name:'iPad Pro 11 ClearView AR 高清膜', category:'iPad', series:'ClearView AR', badges:['new'], summary:'適合閱讀、追劇與簡報，降低環境反光並保留畫質。', features:['AR','高清','低反射','閱讀'], price:'NT$980', stock:'18 件' },
+  { name:'iPad Air PaperTouch 可拆式類紙膜', category:'iPad', series:'PaperTouch', badges:['hot','new'], summary:'寫字時裝上，看影片時拆下，兼顧 Apple Pencil 手感與畫質。', features:['可拆式','類紙手感','Apple Pencil','收納片'], price:'NT$1,180', stock:'15 件' },
+  { name:'iPad Frame PaperTouch 框貼類紙膜', category:'iPad', series:'PaperTouch', badges:['hot'], summary:'框貼結構更穩定，適合長時間筆記、繪圖與課堂使用。', features:['框貼','不易位移','手寫','繪圖'], price:'NT$990', stock:'24 件' },
+  { name:'iPad Creator Combo 創作者雙膜套組', category:'iPad', series:'Bundle', badges:['hot','bundle'], summary:'AR 高清膜加可拆式類紙膜，影音與筆記兩種情境一次解決。', features:['套組','AR','類紙','創作者'], price:'NT$1,690', stock:'12 組' },
+  { name:'MacBook Air 13 Anti-Glare 螢幕膜', category:'MacBook', series:'Anti-Glare', badges:['new'], summary:'降低辦公室燈光反射，適合長時間工作與咖啡廳使用。', features:['抗反光','辦公','MacBook','低眩光'], price:'NT$1,190', stock:'16 件' },
+  { name:'MacBook Pro 14 Privacy 商務防窺膜', category:'MacBook', series:'Privacy Shield', badges:['business','hot'], summary:'適合主管、業務與公司機，保護簡報、報表與客戶資料。', features:['防窺','商務','可拆規劃','B2B'], price:'NT$1,690', stock:'9 件' },
+  { name:'Business Custom 保護貼專案方案', category:'B2B', series:'Business Custom', badges:['business'], summary:'依設備清單、數量、尺寸與交期提供專案報價與補膜規劃。', features:['大量採購','客製尺寸','專案報價','售後補膜'], price:'專案報價', stock:'接案中' }
 ];
 
 function renderDeviceGrid(){
   const grid = document.getElementById('deviceGrid');
   if(!grid) return;
-  grid.innerHTML = deviceCategories.map(item => `
-    <article class='device-card'>
-      <div>
-        <div class='device-icon'>${item.icon}</div>
-        <h3>${item.title}</h3>
-        <p>${item.text}</p>
-      </div>
-      <a href='${item.href}'>${item.link} →</a>
-    </article>
-  `).join('');
+  grid.innerHTML = deviceCategories.map(item => `<article class='device-card'><div><div class='device-icon'>${item.icon}</div><h3>${item.title}</h3><p>${item.text}</p></div><a href='${item.href}'>${item.link} →</a></article>`).join('');
 }
 
 function productCard(product){
   const badges = product.badges.map(b => `<span class='badge'>${b}</span>`).join('');
   const features = product.features.map(f => `<span class='feature'>${f}</span>`).join('');
-  return `
-    <article class='product-card' data-badges='${product.badges.join(' ')}'>
-      <div class='badge-row'>${badges}</div>
-      <h3>${product.name}</h3>
-      <p>${product.summary}</p>
-      <div class='feature-row'>${features}</div>
-      <div class='price-row'>
-        <span class='price'>${product.price}</span>
-        <span class='status'>${product.category}</span>
-      </div>
-    </article>
-  `;
+  return `<article class='product-card' data-badges='${product.badges.join(' ')}'><div class='badge-row'>${badges}</div><h3>${product.name}</h3><p>${product.summary}</p><div class='feature-row'>${features}</div><div class='price-row'><span class='price'>${product.price}</span><span class='status'>${product.stock}</span></div><button class='add-btn' type='button'>加入詢價清單</button></article>`;
 }
 
 function renderProducts(filter='all'){
