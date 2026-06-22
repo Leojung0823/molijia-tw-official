@@ -1,54 +1,30 @@
-const deviceCategories = [
-  { icon:'📱', title:'iPhone', text:'AR 低反射、防窺、高清鋼化、鏡頭貼。適合日常通勤、戶外導航與高頻社群使用。', link:'查看手機系列', href:'#products' },
-  { icon:'✍️', title:'iPad', text:'AR 高清、類紙、可拆式類紙。適合學生筆記、繪圖、追劇與簡報。', link:'查看 iPad 系列', href:'#products' },
-  { icon:'💻', title:'MacBook', text:'抗反光、防窺、螢幕保護。適合商務、辦公、咖啡廳與遠端工作。', link:'查看 MacBook 系列', href:'#products' },
-  { icon:'🧩', title:'Business', text:'公司機、教育平板、展示設備與特殊尺寸保護貼，支援專案報價。', link:'企業客製洽詢', href:'#business' }
-];
-
-const products = [
-  { name:'iPhone 16 Pro ClearView AR 低反射膜', category:'iPhone', series:'ClearView AR', badges:['hot','new'], summary:'低反射、高透光與滑順觸控，適合戶外、導航與日常追劇。', features:['AR低反射','9H','抗指紋','高透光'], price:'NT$690', stock:'36 件' },
-  { name:'iPhone 16 Pro Max ClearView AR 低反射膜', category:'iPhone', series:'ClearView AR', badges:['hot'], summary:'大螢幕高清低反射版本，適合重度手機使用者。', features:['高清','低反射','抗刮','順滑'], price:'NT$740', stock:'28 件' },
-  { name:'iPhone Privacy Shield 防窺保護貼', category:'iPhone', series:'Privacy Shield', badges:['hot'], summary:'左右視角防窺，適合捷運通勤、辦公室與商務訊息保護。', features:['防窺','高清','抗刮','通勤'], price:'NT$790', stock:'22 件' },
-  { name:'iPhone Crystal Tempered 高清鋼化膜', category:'iPhone', series:'Crystal Tempered', badges:['new'], summary:'入門主力款，清晰、防刮、好上手，適合大量備貨與套組。', features:['高清','9H','防刮','入門'], price:'NT$390', stock:'80 件' },
-  { name:'Camera Lens Guard 鏡頭保護貼', category:'Lens', series:'Lens Guard', badges:['hot','bundle'], summary:'與手機膜搭配提高客單價，保護鏡頭玻璃不易刮傷。', features:['高透光','鏡頭防刮','套組推薦','易貼'], price:'NT$290', stock:'120 件' },
-  { name:'iPad Pro 11 ClearView AR 高清膜', category:'iPad', series:'ClearView AR', badges:['new'], summary:'適合閱讀、追劇與簡報，降低環境反光並保留畫質。', features:['AR','高清','低反射','閱讀'], price:'NT$980', stock:'18 件' },
-  { name:'iPad Air PaperTouch 可拆式類紙膜', category:'iPad', series:'PaperTouch', badges:['hot','new'], summary:'寫字時裝上，看影片時拆下，兼顧 Apple Pencil 手感與畫質。', features:['可拆式','類紙手感','Apple Pencil','收納片'], price:'NT$1,180', stock:'15 件' },
-  { name:'iPad Frame PaperTouch 框貼類紙膜', category:'iPad', series:'PaperTouch', badges:['hot'], summary:'框貼結構更穩定，適合長時間筆記、繪圖與課堂使用。', features:['框貼','不易位移','手寫','繪圖'], price:'NT$990', stock:'24 件' },
-  { name:'iPad Creator Combo 創作者雙膜套組', category:'iPad', series:'Bundle', badges:['hot','bundle'], summary:'AR 高清膜加可拆式類紙膜，影音與筆記兩種情境一次解決。', features:['套組','AR','類紙','創作者'], price:'NT$1,690', stock:'12 組' },
-  { name:'MacBook Air 13 Anti-Glare 螢幕膜', category:'MacBook', series:'Anti-Glare', badges:['new'], summary:'降低辦公室燈光反射，適合長時間工作與咖啡廳使用。', features:['抗反光','辦公','MacBook','低眩光'], price:'NT$1,190', stock:'16 件' },
-  { name:'MacBook Pro 14 Privacy 商務防窺膜', category:'MacBook', series:'Privacy Shield', badges:['business','hot'], summary:'適合主管、業務與公司機，保護簡報、報表與客戶資料。', features:['防窺','商務','可拆規劃','B2B'], price:'NT$1,690', stock:'9 件' },
-  { name:'Business Custom 保護貼專案方案', category:'B2B', series:'Business Custom', badges:['business'], summary:'依設備清單、數量、尺寸與交期提供專案報價與補膜規劃。', features:['大量採購','客製尺寸','專案報價','售後補膜'], price:'專案報價', stock:'接案中' }
-];
-
-function renderDeviceGrid(){
-  const grid = document.getElementById('deviceGrid');
-  if(!grid) return;
-  grid.innerHTML = deviceCategories.map(item => `<article class='device-card'><div><div class='device-icon'>${item.icon}</div><h3>${item.title}</h3><p>${item.text}</p></div><a href='${item.href}'>${item.link} →</a></article>`).join('');
-}
-
-function productCard(product){
-  const badges = product.badges.map(b => `<span class='badge'>${b}</span>`).join('');
-  const features = product.features.map(f => `<span class='feature'>${f}</span>`).join('');
-  return `<article class='product-card' data-badges='${product.badges.join(' ')}'><div class='badge-row'>${badges}</div><h3>${product.name}</h3><p>${product.summary}</p><div class='feature-row'>${features}</div><div class='price-row'><span class='price'>${product.price}</span><span class='status'>${product.stock}</span></div><button class='add-btn' type='button'>加入詢價清單</button></article>`;
-}
-
-function renderProducts(filter='all'){
-  const grid = document.getElementById('productGrid');
-  if(!grid) return;
-  const filtered = filter === 'all' ? products : products.filter(product => product.badges.includes(filter));
-  grid.innerHTML = filtered.map(productCard).join('');
-}
-
-function setupTabs(){
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(item => item.classList.remove('active'));
-      tab.classList.add('active');
-      renderProducts(tab.dataset.filter);
-    });
-  });
-}
-
-renderDeviceGrid();
-renderProducts();
-setupTabs();
+const deviceCategories=[{icon:'📱',title:'iPhone',text:'AR 低反射、防窺、高清鋼化、鏡頭貼。適合日常通勤、戶外導航與高頻社群使用。',link:'查看手機系列',href:'#products'},{icon:'✍️',title:'iPad',text:'AR 高清、類紙、可拆式類紙。適合學生筆記、繪圖、追劇與簡報。',link:'查看 iPad 系列',href:'#products'},{icon:'💻',title:'MacBook',text:'抗反光、防窺、螢幕保護。適合商務、辦公、咖啡廳與遠端工作。',link:'查看 MacBook 系列',href:'#products'},{icon:'🧩',title:'Business',text:'公司機、教育平板、展示設備與特殊尺寸保護貼，支援專案報價。',link:'企業客製洽詢',href:'#business'}];
+const products=[
+{id:'p1',name:'iPhone 16 Pro ClearView AR 低反射膜',category:'iPhone',series:'ClearView AR',badges:['hot','new'],summary:'低反射、高透光與滑順觸控，適合戶外、導航與日常追劇。',features:['AR低反射','9H','抗指紋','高透光'],price:'NT$690',stock:'36 件'},
+{id:'p2',name:'iPhone 16 Pro Max ClearView AR 低反射膜',category:'iPhone',series:'ClearView AR',badges:['hot'],summary:'大螢幕高清低反射版本，適合重度手機使用者。',features:['高清','低反射','抗刮','順滑'],price:'NT$740',stock:'28 件'},
+{id:'p3',name:'iPhone Privacy Shield 防窺保護貼',category:'iPhone',series:'Privacy Shield',badges:['hot'],summary:'左右視角防窺，適合捷運通勤、辦公室與商務訊息保護。',features:['防窺','高清','抗刮','通勤'],price:'NT$790',stock:'22 件'},
+{id:'p4',name:'iPhone Crystal Tempered 高清鋼化膜',category:'iPhone',series:'Crystal Tempered',badges:['new'],summary:'入門主力款，清晰、防刮、好上手，適合大量備貨與套組。',features:['高清','9H','防刮','入門'],price:'NT$390',stock:'80 件'},
+{id:'p5',name:'Camera Lens Guard 鏡頭保護貼',category:'Lens',series:'Lens Guard',badges:['hot','bundle'],summary:'與手機膜搭配提高客單價，保護鏡頭玻璃不易刮傷。',features:['高透光','鏡頭防刮','套組推薦','易貼'],price:'NT$290',stock:'120 件'},
+{id:'p6',name:'iPad Pro 11 ClearView AR 高清膜',category:'iPad',series:'ClearView AR',badges:['new'],summary:'適合閱讀、追劇與簡報，降低環境反光並保留畫質。',features:['AR','高清','低反射','閱讀'],price:'NT$980',stock:'18 件'},
+{id:'p7',name:'iPad Air PaperTouch 可拆式類紙膜',category:'iPad',series:'PaperTouch',badges:['hot','new'],summary:'寫字時裝上，看影片時拆下，兼顧 Apple Pencil 手感與畫質。',features:['可拆式','類紙手感','Apple Pencil','收納片'],price:'NT$1,180',stock:'15 件'},
+{id:'p8',name:'iPad Frame PaperTouch 框貼類紙膜',category:'iPad',series:'PaperTouch',badges:['hot'],summary:'框貼結構更穩定，適合長時間筆記、繪圖與課堂使用。',features:['框貼','不易位移','手寫','繪圖'],price:'NT$990',stock:'24 件'},
+{id:'p9',name:'iPad Creator Combo 創作者雙膜套組',category:'iPad',series:'Bundle',badges:['hot','bundle'],summary:'AR 高清膜加可拆式類紙膜，影音與筆記兩種情境一次解決。',features:['套組','AR','類紙','創作者'],price:'NT$1,690',stock:'12 組'},
+{id:'p10',name:'MacBook Air 13 Anti-Glare 螢幕膜',category:'MacBook',series:'Anti-Glare',badges:['new'],summary:'降低辦公室燈光反射，適合長時間工作與咖啡廳使用。',features:['抗反光','辦公','MacBook','低眩光'],price:'NT$1,190',stock:'16 件'},
+{id:'p11',name:'MacBook Pro 14 Privacy 商務防窺膜',category:'MacBook',series:'Privacy Shield',badges:['business','hot'],summary:'適合主管、業務與公司機，保護簡報、報表與客戶資料。',features:['防窺','商務','可拆規劃','B2B'],price:'NT$1,690',stock:'9 件'},
+{id:'p12',name:'Business Custom 保護貼專案方案',category:'B2B',series:'Business Custom',badges:['business'],summary:'依設備清單、數量、尺寸與交期提供專案報價與補膜規劃。',features:['大量採購','客製尺寸','專案報價','售後補膜'],price:'專案報價',stock:'接案中'}];
+const cartKey='molijiaInquiryList';
+function readCart(){try{return JSON.parse(localStorage.getItem(cartKey)||'[]')}catch(e){return[]}}
+function saveCart(list){localStorage.setItem(cartKey,JSON.stringify(list));renderCart()}
+function renderDeviceGrid(){const grid=document.getElementById('deviceGrid');if(!grid)return;grid.innerHTML=deviceCategories.map(item=>`<article class='device-card'><div><div class='device-icon'>${item.icon}</div><h3>${item.title}</h3><p>${item.text}</p></div><a href='${item.href}'>${item.link} →</a></article>`).join('')}
+function productCard(product){const badges=product.badges.map(b=>`<span class='badge'>${b}</span>`).join('');const features=product.features.map(f=>`<span class='feature'>${f}</span>`).join('');return `<article class='product-card' data-badges='${product.badges.join(' ')}'><div class='badge-row'>${badges}</div><h3>${product.name}</h3><p>${product.summary}</p><div class='feature-row'>${features}</div><div class='price-row'><span class='price'>${product.price}</span><span class='status'>${product.stock}</span></div><button class='add-btn' type='button' data-id='${product.id}'>加入詢價清單</button></article>`}
+function renderProducts(filter='all'){const grid=document.getElementById('productGrid');if(!grid)return;const filtered=filter==='all'?products:products.filter(product=>product.badges.includes(filter));grid.innerHTML=filtered.map(productCard).join('');grid.querySelectorAll('[data-id]').forEach(btn=>btn.addEventListener('click',()=>addToCart(btn.dataset.id)))}
+function setupTabs(){document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(item=>item.classList.remove('active'));tab.classList.add('active');renderProducts(tab.dataset.filter||tab.dataset.badge||'all')})})}
+function addToCart(id){const list=readCart();const item=list.find(x=>x.id===id);if(item){item.qty+=1}else{list.push({id,qty:1})}saveCart(list);openCart()}
+function changeQty(id,delta){saveCart(readCart().map(x=>x.id===id?{...x,qty:x.qty+delta}:x).filter(x=>x.qty>0))}
+function parsePrice(price){const n=String(price).replace(/[^0-9]/g,'');return n?Number(n):0}
+function cartTotal(list){return list.reduce((sum,x)=>{const p=products.find(item=>item.id===x.id);return sum+(p?parsePrice(p.price)*x.qty:0)},0)}
+function renderCart(){const list=readCart();let panel=document.getElementById('cartPanel');let count=document.getElementById('cartCount');if(count)count.textContent=list.reduce((s,x)=>s+x.qty,0);if(!panel){panel=document.createElement('aside');panel.id='cartPanel';panel.className='drawer';panel.innerHTML=`<div class='drawer-panel'><div class='drawer-head'><h2>詢價清單</h2><button id='cartClose'>×</button></div><div id='cartItems' class='cart-items'></div><div class='drawer-footer'><div class='summary-row'><span>參考合計</span><b id='cartTotal'>NT$0</b></div><button class='btn light' id='cartClear' type='button'>清空清單</button></div></div>`;document.body.appendChild(panel);document.getElementById('cartClose').onclick=closeCart;document.getElementById('cartClear').onclick=()=>saveCart([]);panel.addEventListener('click',e=>{if(e.target.id==='cartPanel')closeCart()})}const items=document.getElementById('cartItems');if(items)items.innerHTML=list.length?list.map(x=>{const p=products.find(item=>item.id===x.id);return p?`<div class='cart-item'><div><b>${p.name}</b><br><span class='muted'>${p.price} × ${x.qty}</span></div><div class='qty'><button onclick="changeQty('${x.id}',-1)">−</button><span>${x.qty}</span><button onclick="changeQty('${x.id}',1)">＋</button></div></div>`:''}).join(''):`<p class='muted'>清單是空的。</p>`;const total=document.getElementById('cartTotal');if(total)total.textContent='NT$'+cartTotal(list).toLocaleString('zh-TW')}
+function openCart(){renderCart();document.getElementById('cartPanel')?.classList.add('open')}
+function closeCart(){document.getElementById('cartPanel')?.classList.remove('open')}
+function setupHeaderCart(){const old=document.querySelector('.cart');if(old){old.href='javascript:void(0)';old.textContent='詢價清單 0';old.id='openCart';old.classList.add('cart-button')}const btn=document.getElementById('openCart');if(btn)btn.onclick=openCart}
+renderDeviceGrid();renderProducts();setupTabs();setupHeaderCart();renderCart();
