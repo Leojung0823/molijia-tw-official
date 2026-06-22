@@ -27,4 +27,5 @@ function renderCart(){const list=readCart();let panel=document.getElementById('c
 function openCart(){renderCart();document.getElementById('cartPanel')?.classList.add('open')}
 function closeCart(){document.getElementById('cartPanel')?.classList.remove('open')}
 function setupHeaderCart(){const old=document.querySelector('.cart');if(old){old.href='javascript:void(0)';old.textContent='詢價清單 0';old.id='openCart';old.classList.add('cart-button')}const btn=document.getElementById('openCart');if(btn)btn.onclick=openCart}
-renderDeviceGrid();renderProducts();setupTabs();setupHeaderCart();renderCart();
+function setupMvpStatus(){if(document.getElementById('mvpStatus'))return;const target=document.getElementById('products');if(!target)return;const box=document.createElement('section');box.id='mvpStatus';box.className='page-main';box.innerHTML=`<div class='section-block'><p class='kicker'>MVP STATUS</p><h2>目前可測試功能</h2><ul class='checklist'><li>商品卡與商品篩選已啟用</li><li>詢價清單與數量加減已啟用</li><li>資料保存在瀏覽器 localStorage</li></ul></div>`;target.after(box)}
+renderDeviceGrid();renderProducts();setupTabs();setupHeaderCart();setupMvpStatus();renderCart();
