@@ -1,0 +1,16 @@
+Molijia release status
+
+Version: gh-pages MVP
+Date: 2026-06-24
+
+Included:
+- homepage
+- product list
+- inquiry list
+- demo code page
+- demo help page
+- robots
+- sitemap
+
+Status:
+MVP ready for GitHub Pages source gh-pages root.
