@@ -18,7 +18,7 @@
 <p>聯絡方式：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
 <p>商品需求：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
 <p>備註：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
-<p><button class="btn dark" id="makeDemo" type="button">產生 Demo 編號</button> <button class="btn light" type="button">複製摘要</button></p>
+<p><button class="btn dark" id="makeDemo" type="button">產生 Demo 編號</button> <button class="btn light" id="selectSummary" type="button">選取摘要</button></p>
 <h2>Demo 編號格式</h2>
 <p><strong>DEMO-五位數字</strong></p>
 <h2>詢價摘要格式</h2>
@@ -38,6 +38,13 @@ document.getElementById('makeDemo').onclick=function(){
   var need=window.prompt('請輸入商品需求，例如 iPhone 防窺膜 10 片','');
   if(!need){need='請先回首頁加入商品到詢價清單';}
   document.getElementById('demoResult').textContent='膜力佳 Demo 詢價摘要\nDemo 編號：'+code+'\n\n商品清單：\n- '+need+'\n\n備註：目前為前端測試資料，不會送出到後台。';
+};
+document.getElementById('selectSummary').onclick=function(){
+  var range=document.createRange();
+  range.selectNodeContents(document.getElementById('demoResult'));
+  var sel=window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
 };
 </script>
 </body>
