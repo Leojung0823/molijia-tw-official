@@ -35,7 +35,9 @@ Demo 編號：DEMO-12345
 <script>
 document.getElementById('makeDemo').onclick=function(){
   var code='DEMO-'+Math.floor(10000+Math.random()*90000);
-  document.getElementById('demoResult').textContent='膜力佳 Demo 詢價摘要\nDemo 編號：'+code+'\n\n商品清單：\n- 請先回首頁加入商品到詢價清單\n\n備註：目前為前端測試資料，不會送出到後台。';
+  var need=window.prompt('請輸入商品需求，例如 iPhone 防窺膜 10 片','');
+  if(!need){need='請先回首頁加入商品到詢價清單';}
+  document.getElementById('demoResult').textContent='膜力佳 Demo 詢價摘要\nDemo 編號：'+code+'\n\n商品清單：\n- '+need+'\n\n備註：目前為前端測試資料，不會送出到後台。';
 };
 </script>
 </body>
