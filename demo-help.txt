@@ -1,0 +1,23 @@
+Molijia Demo Help
+
+Demo page:
+/demo-code.html
+
+Current supported flow:
+1. Click Demo code from homepage.
+2. Click generate demo code.
+3. Enter product demand.
+4. Select the summary.
+5. Press Command+C or Ctrl+C to copy manually.
+
+Suggested inquiry fields:
+- Name / Company
+- Contact
+- Product demand
+- Quantity
+- Notes
+
+Next phase:
+- Read inquiry list from homepage storage
+- Copy summary automatically
+- Submit inquiry to backend
