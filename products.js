@@ -35,17 +35,14 @@ function productCard(product){
   const badges = product.badges.map(b => `<span class="badge">${b}</span>`).join("");
   const features = product.features.map(f => `<span class="feature">${f}</span>`).join("");
   return `
-    <article class="product-card" data-badges="${product.badges.join(" ")}">
+    <article class="product-card" data-category="${product.category}" data-badges="${product.badges.join(" ")}">
       <div class="badge-row">${badges}</div>
       <h3>${product.name}</h3>
       <p>${product.summary}</p>
       <div class="feature-row">${features}</div>
-      <div class="price-row">
-        <span class="price">${product.price}</span>
-        <span class="status">${product.category}</span>
-      </div>
-    </article>
-  `;
+      <div class="price-row"><span class="price">${product.price}</span><span class="status">規劃中</span></div>
+      <button class="add-btn" type="button">加入詢價清單</button>
+    </article>`;
 }
 
 function renderProducts(filter="all"){
