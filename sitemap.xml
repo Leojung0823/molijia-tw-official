@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://leojung0823.github.io/molijia-tw-official/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://leojung0823.github.io/molijia-tw-official/demo-code.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
