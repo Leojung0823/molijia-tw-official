@@ -11,6 +11,13 @@ Included:
 - demo help page
 - robots
 - sitemap
+- release status
+
+Latest fixes:
+- homepage canonical and social meta tags
+- demo page canonical and social meta tags
+- demo inquiry summary fields
+- sitemap includes support pages
 
 Status:
 MVP ready for GitHub Pages source gh-pages root.
