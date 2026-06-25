@@ -8,6 +8,16 @@
   <url>
     <loc>https://leojung0823.github.io/molijia-tw-official/demo-code.html</loc>
     <lastmod>2026-06-24</lastmod>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leojung0823.github.io/molijia-tw-official/demo-help.txt</loc>
+    <lastmod>2026-06-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://leojung0823.github.io/molijia-tw-official/release-status.txt</loc>
+    <lastmod>2026-06-24</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>
