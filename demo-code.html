@@ -12,7 +12,7 @@
 <section class="section-block">
 <p class="kicker">DEMO CODE</p>
 <h1>Demo 編號與詢價摘要</h1>
-<p>這是 Demo 編號頁。目前可產生測試用 Demo 編號；詢價清單明細會在下一階段接入。</p>
+<p>這是 Demo 編號頁。目前可產生測試用 Demo 編號，並整理成可複製的詢價摘要。</p>
 <h2>手動詢價欄位</h2>
 <p>姓名 / 公司：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
 <p>聯絡方式：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
@@ -26,10 +26,13 @@
 <pre class="summary-card" id="demoResult">膜力佳 Demo 詢價摘要
 Demo 編號：DEMO-12345
 
-商品清單：
+姓名 / 公司：
+聯絡方式：
+商品需求：
 - 商品名稱 x 數量
+備註：
 
-備註：目前為前端測試資料，不會送出到後台。</pre>
+狀態：前端測試資料，尚未送出到後台。</pre>
 <p><a class="btn light" href="./">回首頁</a></p>
 </section>
 </main>
@@ -38,7 +41,7 @@ document.getElementById('makeDemo').onclick=function(){
   var code='DEMO-'+Math.floor(10000+Math.random()*90000);
   var need=window.prompt('請輸入商品需求，例如 iPhone 防窺膜 10 片','');
   if(!need){need='請先回首頁加入商品到詢價清單';}
-  document.getElementById('demoResult').textContent='膜力佳 Demo 詢價摘要\nDemo 編號：'+code+'\n\n商品清單：\n- '+need+'\n\n備註：目前為前端測試資料，不會送出到後台。';
+  document.getElementById('demoResult').textContent='膜力佳 Demo 詢價摘要\nDemo 編號：'+code+'\n\n姓名 / 公司：\n聯絡方式：\n商品需求：\n- '+need+'\n備註：\n\n狀態：前端測試資料，尚未送出到後台。';
 };
 document.getElementById('selectSummary').onclick=function(){
   var range=document.createRange();
